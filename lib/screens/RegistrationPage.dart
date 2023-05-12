@@ -1,44 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'screens/HomePage.dart';
-import 'screens/RegistrationPage.dart';
-import 'package:provider/provider.dart';
-import 'view_model/user_view_model.dart';
-import 'controller/api_service.dart';
-
-void main() {
-  runApp(
-      MultiProvider(
-        providers: [
-          // Pass in the UserRepository instance as an argument
-          ChangeNotifierProvider(create: (_) => UserViewModel(userRepository: UserRepository())),
-        ],
-        child: MyApp(),
-      ));
-}
-
-class MyApp extends StatelessWidget {
+class RegistrationPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginDemo(),
-    );
-  }
+  _RegistrationPageState createState() => _RegistrationPageState();
 }
 
-class LoginDemo extends StatefulWidget {
-  @override
-  _LoginDemoState createState() => _LoginDemoState();
-}
-
-class _LoginDemoState extends State<LoginDemo> {
+class _RegistrationPageState extends State<RegistrationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Login Page Niveus"),
+        title: Text('RegistrationPage Page'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -83,7 +55,7 @@ class _LoginDemoState extends State<LoginDemo> {
                 //TODO FORGOT PASSWORD SCREEN GOES HERE
               },
               child: Text(
-                'Forgot Password',
+                '',
                 style: TextStyle(color: Colors.blue, fontSize: 15),
               ),
             ),
@@ -95,10 +67,10 @@ class _LoginDemoState extends State<LoginDemo> {
               child: TextButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HomePage()));
+                      context, MaterialPageRoute(builder: (_) => RegistrationPage()));
                 },
                 child: Text(
-                  'Login',
+                  'Create User',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
@@ -106,16 +78,7 @@ class _LoginDemoState extends State<LoginDemo> {
             SizedBox(
               height: 130,
             ),
-            TextButton(
-              onPressed: (){
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => RegistrationPage()));
-              },
-              child: Text(
-                'New User',
-                style: TextStyle(color: Colors.blue, fontSize: 15),
-              ),
-            ),
+
           ],
         ),
       ),
